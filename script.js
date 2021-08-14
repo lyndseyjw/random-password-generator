@@ -17,24 +17,21 @@ function writePassword() {
     var lengthChoice = prompt("Please choose number of characters \nPassword must be at least 8 characters & no more than 128");
     console.log(lengthChoice);
 
+    var passwordLength = parseInt(lengthChoice);
+
     if (lengthChoice === null ) {
       alert("This is a required input");
       generatePassword();
-    }
-
-    var passwordLength = parseInt(lengthChoice);
-
-    if (isNaN(passwordLength)) {
+    
+    } else if (isNaN(passwordLength)) {
       alert("Please choose a number")
       generatePassword();
-    }
     
-    if (passwordLength < 8) {
+    } else if (passwordLength < 8) {
       alert("Please choose a number between 8 and 128")
       generatePassword();
-    }
-
-    if (passwordLength > 128) {
+    
+    } else if (passwordLength > 128) {
       alert("Please choose a number between 8 and 128")
       generatePassword();
 
@@ -56,21 +53,21 @@ function writePassword() {
         console.log(finalString);
 
       } else if (characterType[i] === "UPPERCASE letters" && typeResults) {
-        characterSelection = characterSelection.concat(uppercaseOptions);
+        characterSelection = [].concat(uppercaseOptions, characterSelection);
         console.log(characterSelection);
-        finalString = finalString.concat(uppercaseOptions[Math.floor(Math.random()*uppercaseOptions.length)]);
+        finalString = [].concat((uppercaseOptions[Math.floor(Math.random()*uppercaseOptions.length)]));
         console.log(finalString);
 
       } else if (characterType[i] === "NUMBERS" && typeResults) {
-        characterSelection = characterSelection.concat(numericOptions);
+        characterSelection = [].concat(numericOptions, characterSelection);
         console.log(characterSelection);
-        finalString = finalString.concat(numericOptions[Math.floor(Math.random()*numericOptions.length)]);
+        finalString = [].concat((numericOptions[Math.floor(Math.random()*numericOptions.length)]));
         console.log(finalString);
 
       } else if (characterType[i] === "SPECIAL CHARACTERS" && typeResults) {
-        characterSelection = characterSelection.concat(specialOptions);
+        characterSelection = [].concat(specialOptions, characterSelection);
         console.log(characterSelection);
-        finalString = finalString.concat(specialOptions[Math.floor(Math.random()*specialOptions.length)]);
+        finalString = [].concat((specialOptions[Math.floor(Math.random()*specialOptions.length)]));
         console.log(finalString)
       }
 
@@ -87,8 +84,9 @@ function writePassword() {
       console.log(finalString);
     }
 
-    finalString = finalString.join("");
-    return finalString;
+    var finalPassword = finalString.join("");
+    console.log(finalPassword);
+    return finalPassword;
 
   }
 
