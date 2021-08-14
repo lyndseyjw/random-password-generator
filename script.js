@@ -1,126 +1,98 @@
-var specialOptions = [“!”, “#”, “$”, “%”, “&”, “‘”, “(”, “)”, “*”, “+”, “,”, “-”, “.”, “/”, “:”, “;”, “<”, “=”, “>”, “?”, “@”, “[”, “]”, “^”, “_”, “`”, “{”, “|”, “}”, “~”];
-var numericOptions = ['0','1','2','3','4','5','6','7','8','9'];
-var lowercaseOptions = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-var uppercaseOptions = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-
-function userPreferences() {
-
-  var passwordText = prompt("Please choose number of characters \nPassword must be at least 8 characters & no more than 128");
-
-  if (passwordText === null ) {
-    alert("This is a required input");
-    userPreferences();
-  }
-
-  if (isNaN(passwordText)) {
-    alert("Please choose a number")
-    userPreferences();
-  }
-  
-  if (passwordText.length < 8) {
-    alert("Please choose a number between 8 and 128")
-    userPreferences();
-  }
-
-  if (passwordText.length > 128) {
-    alert("Please choose a number between 8 and 128")
-    userPreferences();
-  } else {
-    return parseInt(passwordText);
-  }
-
-  var specialCharacters = confirm("Would you like to have SPECIAL CHARACTERS in your password?");
-  var numeric = confirm("Would you like to have NUMBERS in your password?");
-  var lowercase = confirm("Would you like to have LOWERCASE letters in your password?");
-  var uppercase = confirm("Would you like to have UPPERCASE letters in your password?");
-
-  if (!specialCharacters && !numeric && !lowercase && !uppercase) {
-    alert("You must choose at least one option");
-    specialCharacters.confirm;
-  } else {
-    passwordOptions = specialCharacters.concat(numeric, lowercase, uppercase);
-  }
-
-  var passwordOptions = {
-    passwordText: [],
-    specialCharacters: [];
-    numeric: [];
-    lowercase: [];
-    upppercase [];
-  }
-
-  return passwordOptions
-
-}
-
-
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+var specialOptions = ["!", "#", "$", "%", "&", "‘", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
+var numericOptions = ["0","1","2","3","4","5","6","7","8","9"];
+var lowercaseOptions = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var uppercaseOptions = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var characterSelection = [];
+var finalString = "";
 
-// Write password to the #password input
 function writePassword() {
-  
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-  console.log(passwordText);
 
   function generatePassword() {
-  
 
-    var finalArray = [];
+    var lengthChoice = prompt("Please choose number of characters \nPassword must be at least 8 characters & no more than 128");
+    console.log(lengthChoice);
 
-    var lowercaseIndex = Math.floor(Math.random() * lowercaseOptions.length);
-    var uppercaseIndex = Math.floor(Math.random() * uppercaseOptions.length);
-    var numericIndex = Math.floor(Math.random() * numericOptions.length);
-    var specialIndex = Math.floor(Math.random() * specialOptions.length);
+    if (lengthChoice === null ) {
+      alert("This is a required input");
+      generatePassword();
+    }
+
+    var passwordLength = parseInt(lengthChoice);
+
+    if (isNaN(passwordLength)) {
+      alert("Please choose a number")
+      generatePassword();
+    }
     
-    function chooseoneMessage() {
+    if (passwordLength < 8) {
+      alert("Please choose a number between 8 and 128")
+      generatePassword();
+    }
 
-      return "Please choose at least one option";
-
-    } 
-
-    if (lowercase && uppercase && numeric && specialCharacters) {
-      
-      return lowercaseOptions[lowercaseIndex] + uppercaseOptions[uppercaseIndex] + numericOptions[numericIndex] + specialOptions[specialIndex] * password
-
-    } else if (lowercase && uppercase && numeric) {
-
-      return lowercaseOptions[lowercaseIndex] + uppercaseOptions[uppercaseIndex] + numericOptions[numericIndex]
-
-    } else if (lowercase && uppercase) {
-
-      return lowercaseOptions[lowercaseIndex] + uppercaseOptions[uppercaseIndex] 
-
-    } else if (lowercase) {
-
-      lowercaseOptions[lowercaseIndex]
+    if (passwordLength > 128) {
+      alert("Please choose a number between 8 and 128")
+      generatePassword();
 
     } else {
+      console.log(passwordLength);
+    }
 
-      alert(chooseoneMessage());
+    var characterType = ["LOWERCASE letters", "UPPERCASE letters", "NUMBERS", "SPECIAL CHARACTERS"];
+    for (var i=0; i<characterType.length; i++) {
+
+      var typeResults
+      typeResults = confirm("Would you like to have " + characterType[i] + " in your password?");
+      console.log (typeResults);
+
+      if (characterType[i] === "LOWERCASE letters" && typeResults) {
+        characterSelection = [].concat(lowercaseOptions);
+        console.log(characterSelection);
+        finalString = [].concat(lowercaseOptions[Math.floor(Math.random()*lowercaseOptions.length)]);
+        console.log(finalString);
+
+      } else if (characterType[i] === "UPPERCASE letters" && typeResults) {
+        characterSelection = characterSelection.concat(uppercaseOptions);
+        console.log(characterSelection);
+        finalString = finalString.concat(uppercaseOptions[Math.floor(Math.random()*uppercaseOptions.length)]);
+        console.log(finalString);
+
+      } else if (characterType[i] === "NUMBERS" && typeResults) {
+        characterSelection = characterSelection.concat(numericOptions);
+        console.log(characterSelection);
+        finalString = finalString.concat(numericOptions[Math.floor(Math.random()*numericOptions.length)]);
+        console.log(finalString);
+
+      } else if (characterType[i] === "SPECIAL CHARACTERS" && typeResults) {
+        characterSelection = characterSelection.concat(specialOptions);
+        console.log(characterSelection);
+        finalString = finalString.concat(specialOptions[Math.floor(Math.random()*specialOptions.length)]);
+        console.log(finalString)
+      }
 
     }
 
-    if (chooseoneMessage()) {
+    if (characterSelection.length == 0) {
+      alert("Please choose at least one option");
+      generatePassword();
+    }
+  
+    for(var i=finalString.length; i<passwordLength; i++) {
 
-      writePassword();
-
+      finalString = finalString.concat(characterSelection[Math.floor(Math.random()*characterSelection.length)]);
+      console.log(finalString);
     }
 
-    console.log(lowercaseIndex)
-    console.log(uppercaseIndex);
-    console.log(numericIndex);
-    console.log(specialIndex);
+    finalString = finalString.join("");
+    return finalString;
 
   }
 
+  passwordText.value = password;
 }
 
-
-
-
+generateBtn.addEventListener("click", writePassword);
