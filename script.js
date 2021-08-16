@@ -10,6 +10,43 @@ var uppercaseOptions = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
 // empty variables to combine above arrays depending on user's preferences
 var characterSelection = [];
 var finalArray = "";
+var lengthChoice;
+var passwordLength;
+
+function checkLength () {
+
+  // a prompt will allow user's to choose the length of their password & store it in a variable
+  lengthChoice = prompt("Please choose number of characters \nPassword must be at least 8 characters & no more than 128");
+    
+  console.log(lengthChoice);
+
+  // we are changing the string value user inputs to an integer so we can apply math functions later
+  passwordLength = parseInt(lengthChoice);
+
+  // if the user clicks cancel on the prompt, they will receive an alert asking them to input information & prompt will begin again
+  if (lengthChoice === null ) {
+    alert("This is a required input");
+    checkLength();
+  
+    // if user does not enter a number, they will be alerted & prompt will appear again
+  } else if (isNaN(passwordLength)) {
+    alert("Please choose a number")
+    checkLength();
+  
+    // if user chooses a number < 8, alerted & prompt appears again
+  } else if (passwordLength < 8) {
+    alert("Please choose a number between 8 and 128")
+    checkLength();
+  
+    // user chooses a number > 128, alerted & prompt appears again
+  } else if (passwordLength > 128) {
+    alert("Please choose a number between 8 and 128")
+    checkLength();
+
+  } else {
+    console.log(passwordLength);
+  }
+}
 
 // this is the function that will start once user pressed the generate password button
 function writePassword() {
@@ -22,38 +59,9 @@ function writePassword() {
   // this is the function that will give the user prompts & confirmations, allowing them to choose their specific parameters
   // from here, the computer will randomly select characters based on the user's parameters
   function generatePassword() {
-
-    // a prompt will allow user's to choose the length of their password & store it in a variable
-    var lengthChoice = prompt("Please choose number of characters \nPassword must be at least 8 characters & no more than 128");
-    console.log(lengthChoice);
-
-    // we are changing the string value user inputs to an integer so we can apply math functions later
-    var passwordLength = parseInt(lengthChoice);
-
-    // if the user clicks cancel on the prompt, they will receive an alert asking them to input information & prompt will begin again
-    if (lengthChoice === null ) {
-      alert("This is a required input");
-      generatePassword();
     
-      // if user does not enter a number, they will be alerted & prompt will appear again
-    } else if (isNaN(passwordLength)) {
-      alert("Please choose a number")
-      generatePassword();
+    checkLength();
     
-      // if user chooses a number < 8, alerted & prompt appears again
-    } else if (passwordLength < 8) {
-      alert("Please choose a number between 8 and 128")
-      generatePassword();
-    
-      // user chooses a number > 128, alerted & prompt appears again
-    } else if (passwordLength > 128) {
-      alert("Please choose a number between 8 and 128")
-      generatePassword();
-
-    } else {
-      console.log(passwordLength);
-    }
-
     // an array we can use to create one confirmation using a for loop and indices
     var characterType = ["LOWERCASE letters", "UPPERCASE letters", "NUMBERS", "SPECIAL CHARACTERS"];
     // this for loop will run the length of the array i.e. will give user 4 confirmation messages
