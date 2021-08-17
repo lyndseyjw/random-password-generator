@@ -10,12 +10,14 @@ With my Random Password Generator, clients who have access to highly sensitive d
 
 The funtions this program uses are extremely beneficial for many applications on the web where the computer needs to respond to user input & generate information specific to them that they can use. This project will be a wonderful base for many of my other projects where javascript will be a key player in enhancing UI.
 
+To access the deployed application, please click here : https://lyndseyjw.github.io/random-password-generator/
+
 I hope you enjoy!
 
-![Password Generator Homepage](./home-screen) 
+![Password Generator Homepage](./assets/images/home-screen.png) 
 
-![Password Length Input](./password-length-input)
+![Password Length Input](./assets/images/password-length-input.png)
 
-![Character Parameters Confirmation](./character-parameters-confirmation)
+![Character Parameters Confirmation](./assets/images/character-parameters-confirmation.png)
 
-![Randomly Generated Password Example](./randomly-generated-password)
+![Randomly Generated Password Example](./assets/images/randomly-generated-password.png)
