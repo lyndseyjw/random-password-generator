@@ -10,7 +10,13 @@ With my Random Password Generator, clients who have access to highly sensitive d
 
 The funtions this program uses are extremely beneficial for many applications on the web where the computer needs to respond to user input & generate information specific to them that they can use. This project will be a wonderful base for many of my other projects where javascript will be a key player in enhancing UI.
 
+Technologies used : HTML5, Advanced CSS, Javascript
+
 To access the deployed application, please click here : https://lyndseyjw.github.io/random-password-generator/
+
+This project is licensed under the terms of the MIT license.
+
+You may contact the sole contributor at lyndseyjwatson@gmail.com
 
 I hope you enjoy!
 
